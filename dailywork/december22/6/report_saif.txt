@@ -1,0 +1,12 @@
+180.92.229.165
+administrator
+Jubo@hima@2021#mr
+
+
+
+
+http://172.16.1.90:8889/reports/rwservlet?&desformat=pdf&destype=cache&userid=SALES/SALES7@SFBATT&report=D:\Jubosoft\VMS\BATT\SALES\Reports\MUSHAK_63.RDF&P_INV_NO=FAC-2022-2023-002591
+
+
+172.16.1.90
+http://172.16.1.90:8889/reports/rwservlet?&desformat=pdf&destype=cache&userid=SALES/SALES7@SFBATT&report=D:\Jubosoft\VMS\BATT\SALES\Reports\vat_summary.RDF&P_DATE1=01-NOV-22&report=D:\Jubosoft\VMS\BATT\SALES\Reports\vat_summary.RDF&P_DATE2=01-NOV-22&report=D:\Jubosoft\VMS\BATT\SALES\Reports\vat_summary.RDF&P_UNIT=

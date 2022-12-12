@@ -1,0 +1,12 @@
+client setup
+https://mega.nz/file/7cxHwYAZ#G8aey6geyePn6VDMGx1BhoYJidoUPv2KoptLpnUqeUs
+
+forms report
+https://mega.nz/file/TZIGTaoZ#1m4snPlfRlG6sLWrBcJNUIc8mugcW4w22b1LJdRhzjU
+
+
+toad
+https://mega.nz/file/TQZWWDzb#wS1XLjbg_d77vR0AdGRy2mm-DzOUkA6L-eAeAkCNLuQ
+
+
+http://172.16.1.90:8889/reports/rwservlet?&desformat=pdf&destype=cache&userid=SALES/SALES7@SFBATT&report=D:\Jubosoft\VMS\BATT\SALES\Reports\MUSHAK_63.RDF&P_INV_NO=FAC-2022-2023-002591
