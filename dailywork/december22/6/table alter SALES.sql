@@ -1,4 +1,4 @@
-/* Formatted on 12/7/2022 10:39:16 AM (QP5 v5.227.12220.39754) */
+/* Formatted on 12/11/2022 2:01:14 PM (QP5 v5.227.12220.39754) */
 ALTER TABLE CM_PROJECT ADD (user1 VARCHAR2(50));
 ALTER TABLE CM_PROJECT ADD (PRODUCT_TYPE VARCHAR2(50));
 
@@ -62,3 +62,175 @@ ALTER TABLE RETURN_M ADD (user1 VARCHAR2(50));
 
 ALTER TABLE COMPANY
 MODIFY(DEFAULT_DIR VARCHAR2(100 BYTE));
+
+
+ALTER TABLE SALES.GOODS_DISPATCH_M
+ADD (STATUS VARCHAR2(2 BYTE));
+
+
+ALTER TABLE SALES.GOODS_REC_M
+ADD (OFFICE_CODE VARCHAR2(100 BYTE));
+
+
+ALTER TABLE SALES.GOODS_REC_M
+MODIFY (CPC_OPTIONAL NUMBER);
+
+
+ALTER TABLE SALES.INVOICE_D
+ADD (SD_PER NUMBER(15,4));
+
+
+ALTER TABLE SALES.INVOICE_M
+ADD (user_id VARCHAR2(50 BYTE));
+
+
+ALTER TABLE SALES.RETURN_M
+ADD (RPT_DATE_TIME DATE);
+
+
+
+ALTER TABLE SALES.goods_distribution_m
+ADD (RPT_DATE_TIME DATE);
+
+ALTER TABLE COMPANY ADD (FINANCIAL_ACTIVITIES VARCHAR2(50));
+
+
+ALTER TABLE SALES.GOODS_DISPATCH_M
+ADD (STATUS VARCHAR2(2 BYTE));
+
+
+ALTER TABLE SALES.GOODS_REC_M
+ADD (OFFICE_CODE VARCHAR2(100 BYTE));
+
+
+ALTER TABLE SALES.GOODS_REC_M
+MODIFY (CPC_OPTIONAL NUMBER);
+
+
+ALTER TABLE SALES.INVOICE_D
+ADD (SD_PER NUMBER(15,4));
+
+
+ALTER TABLE SALES.INVOICE_M
+ADD (user_id VARCHAR2(50 BYTE));
+
+
+ALTER TABLE SALES.RETURN_M
+ADD (RPT_DATE_TIME DATE);
+
+
+
+ALTER TABLE SALES.goods_distribution_m
+ADD (RPT_DATE_TIME DATE);
+
+ALTER TABLE COMPANY ADD (FINANCIAL_ACTIVITIES VARCHAR2(50));
+
+
+ALTER TABLE SALES.goods_dispatch_m
+ADD (RPT_DATE_TIME DATE);
+
+
+ALTER TABLE SALES.TRANSFER_RECEIVE_M
+ADD (RPT_DATE_TIME DATE);
+
+CREATE TABLE SALES.TAX_CERTIFICATE_D1
+(
+   TCD_ID             NUMBER (38) NOT NULL,
+   TCM_ID             NUMBER (38),
+   CHALL_NO           VARCHAR2 (50 BYTE),
+   CHALL_DATE         DATE,
+   AMOUNT             NUMBER (20, 6),
+   VAT                NUMBER (20, 6),
+   TAX                NUMBER (20, 6),
+   SOURCE_CODE        VARCHAR2 (20 BYTE),
+   PER_TAX            NUMBER (20, 6),
+   COMP_ID            NUMBER (10),
+   TCD_NO             VARCHAR2 (40 BYTE),
+   TCD_NO_ID          NUMBER (38),
+   TCD_DATE           DATE,
+   UNIT               NUMBER (20),
+   PROJECT_ID         NUMBER (4),
+   REC_BATCH_ID       NUMBER (10),
+   VDS_PAYMENT_CODE   VARCHAR2 (20 BYTE),
+   REMARKS            VARCHAR2 (100 BYTE),
+   SIX_SIX            VARCHAR2 (70 BYTE),
+   SIX_DATE           DATE,
+   BANK_CODE          VARCHAR2 (50 BYTE),
+   DEPOSIT_DATE       DATE
+);
+/
+
+
+ALTER TABLE SALES.TAX_CERTIFICATE_D1 ADD (
+  CONSTRAINT TAX_CERTIFICATE_D1_FK
+  FOREIGN KEY (TCM_ID)
+  REFERENCES SALES.TAX_CERTIFICATE_M1 (TCM_ID)
+  ENABLE VALIDATE);
+
+
+CREATE TABLE SALES.TAX_CERTIFICATE_M1
+(
+   TCM_ID           NUMBER (38) NOT NULL,
+   TCM_DATE         DATE,
+   TCM_NO           VARCHAR2 (40 BYTE) NOT NULL,
+   TCM_ENTERED_BY   VARCHAR2 (100 BYTE),
+   TCM_CER_DATE     DATE,
+   TCM_NO_ID        NUMBER,
+   UNIT             NUMBER (20)
+);
+/
+
+ALTER TABLE SALES.TAX_CERTIFICATE_M1 ADD (
+  CONSTRAINT TAX_CERTIFICATE_M1_PK
+  PRIMARY KEY
+  (TCM_ID));
+
+
+
+UPDATE INVOICE_M MT
+   SET INV_DATE =
+          (SELECT MR.DELIVERY_DATE
+             FROM INVOICE_M MR
+            WHERE MR.INV_NO = MT.INV_NO);
+
+COMMIT;
+/
+
+
+UPDATE goods_rec_m MT
+   SET REBATE_MONTH =
+          (SELECT MR.REC_DATE
+             FROM goods_rec_m MR
+            WHERE MR.REC_BATCH_ID = MT.REC_BATCH_ID);
+
+COMMIT;
+/
+
+CREATE OR REPLACE FORCE VIEW SALES.VW_SALELAS_MM
+AS
+   SELECT invoice_m.inv_date,
+          TO_CHAR (invoice_m.inv_date, 'YYYYMM') ym,
+          TO_CHAR (invoice_m.inv_date, 'YYYY') year1,
+          TO_CHAR (invoice_m.inv_date, 'MM') mm,
+          TO_CHAR (invoice_m.inv_date, 'Mon-rrrr') mm2,
+          invoice_d.product_id,
+          invoice_d.inv_qty,
+          invoice_d.tot_amount_t,
+          invoice_d.SD TOT_SD,
+          invoice_d.tot_vat_price
+     FROM SALES.invoice_m, SALES.invoice_d
+    WHERE invoice_m.inv_no = invoice_d.inv_no;
+/
+
+CREATE OR REPLACE FORCE VIEW sales.vw_sales_yyyy
+AS
+     SELECT inv_date,
+            TO_CHAR (a.inv_date, 'YYYY') year1,
+            TO_CHAR (a.inv_date, 'mm') month1,
+            SUM (NVL (b.tot_amount_t, 0)) amount,
+            SUM (NVL (b.sd, 0)) sd,
+            SUM (NVL (b.tot_vat_price, 0)) vat
+       FROM sales.invoice_m a, sales.invoice_d b, sales.product_info c
+      WHERE a.inv_no = b.inv_no AND b.product_id = c.product_id
+   GROUP BY a.inv_date;
+/
