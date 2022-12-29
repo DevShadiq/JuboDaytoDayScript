@@ -1,12 +1,28 @@
 client setup
 https://mega.nz/file/7cxHwYAZ#G8aey6geyePn6VDMGx1BhoYJidoUPv2KoptLpnUqeUs
 
-forms report
+forms report 10G
 https://mega.nz/file/TZIGTaoZ#1m4snPlfRlG6sLWrBcJNUIc8mugcW4w22b1LJdRhzjU
 
 
 toad
 https://mega.nz/file/TQZWWDzb#wS1XLjbg_d77vR0AdGRy2mm-DzOUkA6L-eAeAkCNLuQ
+
+
+start Navigator http://10.0.100.10:8889/forms/frmservlet?config=VMS
+
+http://103.199.108.246:8283/forms/frmservlet?CONFIG=BATTERY
+
+DESKTOP-25A2V0N\administrator
+
+Jubosoft@crawn
+
+182.48.67.125:4255
+
+Jubo#rigsmv#2023
+
+Jubo#rigs#2022
+Jubo#rigs#2022
 
 
 http://172.16.1.90:8889/reports/rwservlet?&desformat=pdf&destype=cache&userid=SALES/SALES7@SFBATT&report=D:\Jubosoft\VMS\BATT\SALES\Reports\MUSHAK_63.RDF&P_INV_NO=FAC-2022-2023-002591

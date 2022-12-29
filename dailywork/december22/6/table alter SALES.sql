@@ -234,3 +234,25 @@ AS
       WHERE a.inv_no = b.inv_no AND b.product_id = c.product_id
    GROUP BY a.inv_date;
 /
+
+
+CREATE TABLE EMP_INFO
+(
+  EMP_ID     NUMBER(10),
+  EMP_NAME   VARCHAR2(150 BYTE),
+  EMP_DESIG  VARCHAR2(50 BYTE),
+  PHONE_NO   VARCHAR2(50 BYTE),
+  EMAIL_NO   VARCHAR2(50 BYTE),
+  NID_NO     VARCHAR2(30 BYTE),
+  STATUS     VARCHAR2(50 BYTE)
+);
+/
+
+SET DEFINE OFF;
+Insert into EMP_INFO
+   (EMP_ID, EMP_NAME, EMP_DESIG, PHONE_NO, EMAIL_NO, 
+    NID_NO, STATUS)
+ Values
+   (1, 'Md. Lokman Mia', 'Manager-Finance(FP&A)', '01985507996', 'lokman.mia@himalayawellness.com', 
+    '6983616891', 'A');
+COMMIT;

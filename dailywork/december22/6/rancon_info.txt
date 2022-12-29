@@ -1,7 +1,11 @@
 Rancon Automobiles Limited
+000491714-0101
 Rancon Autos Limited
+000491547-0101
 Rancon Agro Machinery Limited
+001081016-0101
 Rancon Truck & Buses Ltd.
+000336633-0101
 
 Rangs Workshop Ltd.
 387, Tejgaon I/A, Dhaka-1208
@@ -11,8 +15,18 @@ Mr. Ahmmad Mahbub Karim
 
 
 Rancon Car Hub Limited
-Rancon British Motors Ltd.
+001797397-0101
 
+FULL OK
+Rancon British Motors Ltd.
+IP:  192.168.26.170
+PASS: Rpassword;
+BIN: 001782796-0101
+ANY: 457 384 416
+Password: Rbml@1234
+
+
+Rpassword;
 Rancon Car Hu Ltd, House 21, Road No.103,
 Gulshan 2, Dhaka-1212
 
@@ -35,10 +49,10 @@ raml_387
 2. Rancon Trucks & Buses Ltd.
 rtbl_387
 
-3. Rancon Autos Ltd. 
+3. Rancon Autos Ltd. IP: 192.189.1.22
 ral_387
 
-4. Rancon Agro machinery Ltd. IP: 192.189.23
+4. Rancon Agro machinery Ltd. IP: 192.189.1.23
 ragml_387
 
 
